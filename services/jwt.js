@@ -1,11 +1,14 @@
 import jwt from 'jwt-simple';
 import moment from 'moment';
+import dotenv from 'dotenv';
 
-// Clave secreta
-const secret = 'SECRET_KEY_pRoJeCt_sOcIal_net.@';
+// Cargar las variables de entorno
+dotenv.config();
+
+// Clave secreta obtenida desde el archivo .env
+const secret = process.env.JWT_SECRET;
 
 // Método para generar tokens
-// Unix: segundos transcurridos desde el 1 de enero de 1970 hasta hoy.
 const createToken = (user) => {
   const payload = {
     userId: user._id,
